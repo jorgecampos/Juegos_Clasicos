@@ -1,6 +1,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
+char pinta_tablero(char c1='1', char c2='2', char c3='3', char c4='4', char c5='5', char c6='6', char c7='7', char c8='8', char c9='9'){
+        printf("\n %c | %c | %c\n", c1, c2, c3);
+        printf("---+---+---\n");
+        printf("\n %c | %c | %c\n", c4, c5, c6);
+        printf("---+---+---\n");
+        printf("\n %c | %c | %c\n\n", c7, c8, c9);
+}
+
 int main() {
 
     int jugador=1,error,empate=0,ganar=0;
@@ -9,14 +18,12 @@ int main() {
     do{
         error=1;
 
-        system("cls");
 
-        printf("JUEGO DEL 3 EN RAYA \n");
-        printf("\n %c | %c | %c\n", c1, c2, c3);
-        printf("---+---+---\n");
-        printf("\n %c | %c | %c\n", c4, c5, c6);
-        printf("---+---+---\n");
-        printf("\n %c | %c | %c\n\n", c7, c8, c9);
+        system("clear");
+        system("toilet --gay -fpagga JUEGO DEL 3 EN RAYA");
+
+        pinta_tablero(c1, c2, c3, c4, c5, c6, c7, c8, c9);
+
 
         if(jugador==1){
             marca='X';
@@ -73,32 +80,26 @@ int main() {
                 ganar=1;}
             }
 
-    //empate
-        if((c1 !='1' && c2 !='2' && c3 !='3' && c4 !='4' && c5 !='5' && c6 !='6' && c7 !='7' && c8 !='8' &&c9 !='9')&& ganar==0){
+//empate
+
+        if((c1 !='1' && c2 !='2' && c3 !='3' && c4 !='4' && c5 !='5' && c6 !='6' && c7 !='7' && c8 !='8' && c9 !='9') && ganar==0){
             empate=1;}
+
 
         if(ganar==1||empate==1){
 
-            //transcurso de la partida
 
-        system("cls");
+
+        system("clear");
         if(ganar=1){
-            printf("Jugador: %d Gana!\n\n",jugador);
-            printf("\n %c | %c | %c\n", c1, c2, c3);
-            printf("---+---+---\n");
-            printf("\n %c | %c | %c\n", c4, c5, c6);
-            printf("---+---+---\n");
-            printf("\n %c | %c | %c\n\n", c7, c8, c9);
+            system("toilet --gay -fpagga GANA!");
+            pinta_tablero(c1, c2, c3, c4, c5, c6, c7, c8, c9);
           }
 
-/*        if(empate==1){
-            printf("Empate!\n",jugador);
-            printf("\n %c | %c | %c\n", c1, c2, c3);
-            printf("---+---+---\n");
-            printf("\n %c | %c | %c\n", c4, c5, c6);
-            printf("---+---+---\n");
-            printf("\n %c | %c | %c\n\n", c7, c8, c9);
-          }fallo de la devolucion del resultado empate*/
+        if(empate=1){
+            printf("Empate!\n");
+            pinta_tablero(c1, c2, c3, c4, c5, c6, c7, c8, c9);
+          }//fallo de la devolucion del resultado empate
 
         printf("Jugar de nuevo: Y/N ?\n");
 
