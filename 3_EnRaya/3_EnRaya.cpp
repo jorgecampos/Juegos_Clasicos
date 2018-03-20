@@ -85,21 +85,19 @@ int main() {
         if((c1 !='1' && c2 !='2' && c3 !='3' && c4 !='4' && c5 !='5' && c6 !='6' && c7 !='7' && c8 !='8' && c9 !='9') && ganar==0){
             empate=1;}
 
-
+//Finalizacion del juego 
         if(ganar==1||empate==1){
 
-
-
         system("clear");
-        if(ganar=1){
+        if(ganar==1){
             system("toilet --gay -fpagga GANA!");
             pinta_tablero(c1, c2, c3, c4, c5, c6, c7, c8, c9);
           }
 
-        if(empate=1){
+        if(empate==1){
             printf("Empate!\n");
             pinta_tablero(c1, c2, c3, c4, c5, c6, c7, c8, c9);
-          }//fallo de la devolucion del resultado empate
+          }
 
         printf("Jugar de nuevo: Y/N ?\n");
 
