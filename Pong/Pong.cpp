@@ -11,7 +11,10 @@ void borde (char campo[V][H]);
 void raqjug (char campo[V][H], int inijug, int finjug);
 void raqIA (char campo[V][H], int iniIA, int finIA);
 void pel (char campo[V][H], int pelX, int pelY);
-void leercampo (char campo[V][H]);
+void leercamp (char campo[V][H]);
+void gameloop (char campo[V][H], int pelX, int pelY, int inijug, int finjug, int iniIA, int finIA, int modX, int modY, int modIA);
+void draw (campo[V][H]);
+void input (char campo[V][H], int *pelX, int *pelY, int *inijug, int *finjug, int *iniIA, int *finIA, int *modX, int *modY, int *modIA, int *gol);
 
 int main() {
 
@@ -88,7 +91,7 @@ void pel (char campo[V][H], int pelX, int pelY){
     campo[pelY][pelY] = '0';
 }
 
-void leercamp (char campo[v][H]){
+void leercamp (char campo[V][H]){
     for (int i = 0; i < V; i++){
         for (int j = 0; j < H; j++){
             printf("%c", campo[i][j]);
@@ -97,18 +100,48 @@ void leercamp (char campo[v][H]){
     }
 }
 
-void gameloop (char campo[V][H], int pelX, int pelY, int inijug, int finjug, int iniIA, int finIA, int modX, int modY, int media){
+void gameloop (char campo[V][H], int pelX, int pelY, int inijug, int finjug, int iniIA, int finIA, int modX, int modY, int modIA){
 
     int gol = 0;
 
     do{
       draw (campo);//dibujar en pantalla
-      input ();//modificar la posicion
+      input (campo, &pelX, &pelY, &inijug, &finjug, &iniIA, &finIA, &modX, &modY, &modIA, &gol);//modificar la posicion
       update (); // actualirzar la matriz campo
       sleep (10);
     }while(gol == 0);
 }
 
-void draw (campo[V][H]){
-    system ("clear")
+void draw (char campo[V][H]){
+    system ("clear");
+    leercamp (campo);
+}
+
+void input (char campo[V][H], int *pelX, int *pelY, int *inijug, int *finjug, int *iniIA, int *finIA, int *modX, int *modY, int *modIA, int *gol){
+    //verificacion
+    if (*pelY == 1 || *pelY == V-2){
+        *modY *= -1;
+    }
+
+    if (*pelX == 1 || *pelY == H-2){
+        *gol = 1;
+    }
+
+    if (*pelX == 4){
+        for (int i = (*inijug); i <= (*finjug); i++){
+            if (i == (*PelY)){
+                *modX *= -1;
+            }
+        }
+    }
+
+    if (*pelX == H-5){
+        for (int i = (*iniIA); i <= (*finIA); i++){
+            if (i == (*pelY)){
+                *mod *= -1;
+            }
+        }
+    }
+    //modificacion
+
 }
